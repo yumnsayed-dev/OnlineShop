@@ -10,11 +10,14 @@ namespace ShopRepository.ShopContext
 {
     public class ShopDbContext : DbContext
     {
-        public ShopDbContext(DbContextOptions options ):base(options)
+        public ShopDbContext(DbContextOptions<ShopDbContext> options) :base(options)
         {
 
         }
-
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
         public DbSet<OrderSalesHeader> OrderSalesHeaders { set; get; }
 
         public DbSet<OrderSalesDetail> OrderSalesDetails { set; get; }

@@ -11,6 +11,7 @@ namespace ShopCore.Dtos
         public string ProductName { get; set; }
         public int AvailablelQuantity { get; set; }
         public decimal TotalPrice { get; set; }
+        public decimal OnSalePrice { get; set; }
         public int DiscountPerc { get; set; }
         public string Description { get; set; }
         public string UnitOfMeasure { get; set; }   

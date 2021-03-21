@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 using ShopRepository.EntitiesDataSeeds;
+using Microsoft.AspNetCore.Identity;
+using ShopCore.identity;
+using ShopRepository.Identity;
 
 namespace ShopApi
 {
@@ -29,6 +32,11 @@ namespace ShopApi
                     var context = services.GetRequiredService<ShopDbContext>();
                     await context.Database.MigrateAsync();
                     await ShopDatabaseSeed.SeedDatabase(context, loggerFactory);
+
+                    var userManager = services.GetRequiredService <UserManager<AppUser>>();
+                    var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+                    await identityContext.Database.MigrateAsync();
+                    await AppIdentityDbContextSeed.SeedUsersAysnc(userManager);
                 }
                 catch (Exception ex)
                 {

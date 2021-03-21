@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopCore.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,5 +7,6 @@ namespace ShopCore.Domain
 {
    public interface IOrderSalesDetail
     {
+        List<OrderSalesDetailVM> getOrderDetails(string OrderId);
     }
 }

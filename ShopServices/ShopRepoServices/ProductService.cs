@@ -36,7 +36,8 @@ namespace ShopServices.ShopRepoServices
                                 Category = cat.CategoryName,
                                 UnitOfMeasure = unit.UnitDescription,
                                 Description = prods.Description,
-                                TotalPrice = prods.TotalPrice
+                                TotalPrice = prods.TotalPrice,
+                                OnSalePrice = prods.TotalPrice - (((prods.TotalPrice * prods.DiscountPerc.GetValueOrDefault())) / 100)
                             }).FirstOrDefault();
 
             return product;
@@ -61,7 +62,8 @@ namespace ShopServices.ShopRepoServices
                                     Category = cat.CategoryName,
                                     UnitOfMeasure = unit.UnitDescription,
                                     Description = prods.Description,
-                                    TotalPrice = prods.TotalPrice
+                                    TotalPrice = prods.TotalPrice,
+                                    OnSalePrice = prods.TotalPrice - (((prods.TotalPrice * prods.DiscountPerc.GetValueOrDefault())) / 100)
                                 }).OrderBy(x => x.ProductName).ToList();
             }
             else
@@ -83,7 +85,8 @@ namespace ShopServices.ShopRepoServices
                                     Category = cat.CategoryName,
                                     UnitOfMeasure = unit.UnitDescription,
                                     Description = prods.Description,
-                                    TotalPrice = prods.TotalPrice
+                                    TotalPrice = prods.TotalPrice,
+                                    OnSalePrice = prods.TotalPrice-(((prods.TotalPrice* prods.DiscountPerc.GetValueOrDefault()))/100)
                                 }).OrderBy(x => x.ProductName).ToList();
             }
 

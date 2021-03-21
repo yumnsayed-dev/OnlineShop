@@ -10,6 +10,8 @@ using ShopApi.Middleware;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using ShopApi.Errors;
+using ShopRepository.Identity;
+using ShopApi.IdentityExetentions;
 
 namespace ShopApi
 {
@@ -57,6 +59,12 @@ namespace ShopApi
 
             services.AddDbContext<ShopDbContext>(options =>
             options.UseSqlServer(_IConfig.GetConnectionString("OnlineShoppingCS")));
+
+            services.AddDbContext<AppIdentityDbContext>(x =>
+            {
+                x.UseSqlServer(_IConfig.GetConnectionString("IdentityConnection"));
+            });
+            services.AddIdentityServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -62,7 +62,12 @@ namespace ShopServices.ShopRepoServices
             return  _entities.AsQueryable();
         }
 
-    
+        public int GetMaxId()
+        {
+            int Id = 1;
+            try { Id = _entities.Max(a => a.BaseId) + 1; } catch { Id = 1; }
+            return Id;
+        }
 
     }
 }

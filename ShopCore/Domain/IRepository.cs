@@ -12,9 +12,7 @@ namespace ShopCore.Domain
         void SaveChanges();
         IQueryable<T> FindBy(System.Linq.Expressions.Expression<Func<T, bool>> predicate);
         IQueryable<T> GetAll();
+        int GetMaxId();
 
-
-        //Task<T> GetEntityWithSpec(IGenericSpecification<T> spec);
-        //Task<IReadOnlyList<T>> ListAsync(IGenericSpecification<T> spec);
     }
 }

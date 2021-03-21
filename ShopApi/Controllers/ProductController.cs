@@ -24,7 +24,8 @@ namespace ShopApi.Controllers
 
             return Ok(products);
         }
-            [HttpGet("GetSingleProduct/{id}")]
+        [HttpGet]
+        [Route("GetSingleProduct/{id}")]
         public  ActionResult<ShopCore.Dtos.ProductsVM> GetProduct(int id)
         {
             var singleProduct =  _product.GetProductById(id);
