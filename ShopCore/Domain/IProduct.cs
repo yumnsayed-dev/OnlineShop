@@ -8,7 +8,7 @@ namespace ShopCore.Domain
     {
         ProductsVM GetProductById(int ProductId);
 
-        List<ProductsVM> GetProductList();
+        List<ProductsVM> GetProductList(string catId,string sort);
 
     }
 }

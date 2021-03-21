@@ -18,9 +18,9 @@ namespace ShopApi.Controllers
   
         [HttpGet]
         [Route("GetListOfProducts")]
-        public ActionResult<List<ShopCore.Dtos.ProductsVM>> GetListOfProducts(string? catId)
+        public ActionResult<List<ShopCore.Dtos.ProductsVM>> GetListOfProducts(string? catId,string? sort)
         {
-            var products = _product.GetProductList();
+            var products = _product.GetProductList(catId,sort);
 
             return Ok(products);
         }
