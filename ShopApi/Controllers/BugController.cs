@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ShopApi.Errors;
 using ShopRepository.ShopContext;
 using System;
@@ -15,6 +16,12 @@ namespace ShopApi.Controllers
         public BugController(ShopDbContext shopContext)
         {
             _shopContext = shopContext;
+        }
+        [HttpGet("testauth")]
+        [Authorize]
+        public ActionResult<string> GetSecretText()
+        {
+            return "secred paging";
         }
 
         [HttpGet("notfound")]

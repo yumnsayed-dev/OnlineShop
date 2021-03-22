@@ -35,6 +35,7 @@ namespace ShopApi
             services.AddScoped<ICategory, CategoryService>();
             services.AddScoped<ITaxTypes, TaxTypesService>();
             services.AddScoped<IUnitOfMeasure, UnitOfMeasureService>();
+            services.AddScoped<IJsonToken, JsonTokenService>();
             services.AddControllers();
 
             //Passing array of validation error by overriding API BAHVOIR
@@ -64,7 +65,7 @@ namespace ShopApi
             {
                 x.UseSqlServer(_IConfig.GetConnectionString("IdentityConnection"));
             });
-            services.AddIdentityServices();
+            services.AddIdentityServices(_IConfig);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -83,6 +84,7 @@ namespace ShopApi
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
